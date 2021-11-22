@@ -1,0 +1,38 @@
+#%RAML 1.0
+title: processBusinessApi
+
+uses:
+  common: /Library/Common/commonBusinesslibrary.raml
+
+
+/booking:
+  /{transportType}:
+    /routes:
+      get:
+        is:
+          - common.companyName
+          - common.transactionId
+          - common.departureLocation
+          - common.destinationLocation
+        responses:
+          200:
+            body:
+              application/json:
+                type: !include /Library/routes/dataTypes/getRoutesResonse200dataType.raml
+                
+                example: !include /Library/routes/Routeexample/getRoutesExamplefile.json
+                  
+    /schedules:
+      get:
+        is:
+          - common.companyName
+          - common.transactionId
+          - common.destinationLocation
+          - common.departureLocation
+
+        responses:
+          200:
+            body:
+              application/json:
+                type: !include /Library/schedules/getSchedules200library.raml
+                
