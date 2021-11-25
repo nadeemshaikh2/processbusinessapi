@@ -1,6 +1,6 @@
 %dw 2.0
 
-type auto_81bb713a_e07d_4f38_9369_32e0c7153662_Output_Payload = {
+type auto_45b5ba82_c69f_460f_9057_0793b812bbec_Output_Payload = {
   departureSchedules: Array<{    availableSeats: Number,     companyName: String,     departureDateTime: String,     travelRoute: {      originalLocation: {        locationDesc: String,         locationCode: String,         _?: Any      },       destinationLocation: {        locationDesc: String,         locationCode: String,         _?: Any      },       _?: Any    },     _?: Any  }>, 
   _?: Any
 }

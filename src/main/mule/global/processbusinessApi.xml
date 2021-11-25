@@ -61,7 +61,7 @@ attributes.queryParameters.'destinationLocation']]></ee:set-variable>
     <flow name="get:\booking\(transportType)\schedules:processapirami-config">
         <flow-ref doc:name="Flow Reference" doc:id="e8683511-b131-4a55-83bc-ea5cf5d07041" name="processbusinessApiSub_Flow"/>
 		<logger level="INFO" doc:name="Logger" doc:id="4e9e8528-429e-4feb-b9b4-5c30a94cbc7c" message="Request Received  for Schedules processApi for BAPI for trasactionId #[vars.transactionId]"/>
-		<flow-ref doc:name="Flow Reference" doc:id="b7c3aa34-2c4b-4d68-900f-329beaf990fb" name="get-SchedulesimplementationSub_Flow" />
+		<flow-ref doc:name="Flow Reference" doc:id="b7c3aa34-2c4b-4d68-900f-329beaf990fb" name="getSchedules-implementationSub_Flow" />
 		<logger level="INFO" doc:name="Logger" doc:id="8d25c5c8-c4b6-49ca-8303-dd2edae65d57" message="Response sent for schedules processApi for BAPI for trasactionId #[vars.transactionId]"/>
     </flow>
 </mule>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
-	xmlns:os="http://www.mulesoft.org/schema/mule/os"
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
 	xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway"
 	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http"
 	xmlns="http://www.mulesoft.org/schema/mule/core"
@@ -24,10 +24,9 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
     </http:listener-config>
     <apikit:config name="processapirami-config" api="processapirami.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <configuration doc:name="Configuration" doc:id="9f10b4fc-7265-4016-bc1e-29b918269e40" defaultErrorHandler-ref="globalErrorHandlerError_Handler" />
-	<os:object-store name="Object_store" doc:name="Object store" doc:id="e2089287-e0a6-48f1-baae-85333cf1a106" maxEntries="1000" entryTtl="15" entryTtlUnit="MINUTES" expirationInterval="10" />
-    <ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="0fbd0687-a7f8-4116-bfa4-bf41025ddfbe" objectStore="Object_store" keyGenerationExpression='#[vars.transportCompany ++ vars.transportType ++ "Routes"]'/>
-	
-	
+    
+	<ee:object-store-caching-strategy name="Caching_Strategy" doc:name="Caching Strategy" doc:id="b9f6768f-4300-4d74-bbea-8e3f2a2a020f" objectStore="Object_store" keyGenerationExpression='#[vars.transportCompany ++ vars.transportType ++ vars.resource]'/>
+	<os:object-store name="Object_store" doc:name="Object store" doc:id="41aa55a2-4e54-4c56-8b5f-c277837617f7" maxEntries="1000" entryTtl="15" entryTtlUnit="MINUTES" expirationInterval="20" />
 	
 	
 

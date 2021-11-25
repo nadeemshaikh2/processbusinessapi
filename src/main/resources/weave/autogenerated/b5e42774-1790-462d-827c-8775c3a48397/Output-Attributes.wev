@@ -1,6 +1,6 @@
 %dw 2.0
 
-type auto_81bb713a_e07d_4f38_9369_32e0c7153662_Output_Attributes = {|
+type auto_b5e42774_1790_462d_827c_8775c3a48397_Output_Attributes = {|
   clientCertificate?: {|
     publicKey?: {|  |}, 
     "type"?: String, 
@@ -23,5 +23,5 @@ type auto_81bb713a_e07d_4f38_9369_32e0c7153662_Output_Attributes = {|
   uriParams: {| transportType: String |}, 
   version: String, 
   localAddress: String
-|}
+|} | Null
 

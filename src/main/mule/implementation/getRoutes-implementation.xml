@@ -19,22 +19,21 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 						<ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
-payload map(value,index)->
+payload map(value,index)->(
 
 {
                       "companyCode": "TravelOnTip",
                       "originalLocation": {
-                        "locationcode": value.originLocation,
-                        "locationDesc": "Beauna Vista Singapore"
-                      },
-                      "destinationLocation": {
-                        "locationCode": value.destinationLocation,
-                        "locationDesc": "Klang Malaysia"
-                      }
-                    }]]></ee:set-payload>
+                        "locationCode": value.originLocation.locationCode,
+                        "locationDesc": "Beauna Vista Singapore"},      
+                        "destinationLocation": {
+                        "locationCode": value.destinationLocation.locationCode,
+                        "locationDesc": "Klang Malaysia" },
+                    }
+                    
+                    )]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
-					<logger level="INFO" doc:name="Logger" doc:id="376a7203-2663-4350-857a-ea0abd3628f9" message="AFTER TRANSFORMATION" />
 				</ee:cache>
 	</sub-flow>
 	<sub-flow name="getRoutes-callfastGo-Subflow" doc:id="52eef456-d1e5-489e-b7f7-e482045d4035" >
@@ -51,25 +50,25 @@ payload map(value,index)->
 						<ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
-payload map(value,index)->
+payload map(value,index)->(
 
 {
                       "companyCode": "FastGo",
                       "originalLocation": {
-                        "locationcode": value.departureLocationCode,
+                        "locationCode": value.departureLocationCode,
                         "locationDesc": "Beauna Vista Singapore"
                       },
                       "destinationLocation": {
                         "locationCode": value.arrivalLocationCode,
                         "locationDesc": "Klang Malaysia"
                       }
-                    }]]></ee:set-payload>
+                    })]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
-					<logger level="INFO" doc:name="Logger" doc:id="1a52bd66-c869-45d5-bbda-29f880bff987" message="AFTER TRANSFORMATION" />
 				</ee:cache>
 	</sub-flow>
 	<sub-flow name="getRoutes-implementationSub_Flow" doc:id="66f14c94-a8ac-42f8-a81d-726d75ce5ec5" >
+		<set-variable value="Routes" doc:name="Set Variable" doc:id="87cef0a7-5e95-4f3c-affa-536326ccf375" variableName="resource"/>
 		<choice doc:name="Choice" doc:id="515a6e57-93c3-4779-bda9-2c2be7929c04" >
 			<when expression="#[vars.transportCompany == 'fastGo']">
 				<flow-ref doc:name="Flow Reference" doc:id="2071d07b-5913-40d3-acfb-b1d5006e167d" name="getRoutes-callfastGo-Subflow" />
